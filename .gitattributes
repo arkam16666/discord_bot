@@ -1,0 +1,2 @@
+# ใช้ LF ทุกไฟล์ (Dockerfile/สคริปต์ที่เป็น CRLF จะพังใน Linux)
+* text=auto eol=lf

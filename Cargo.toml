@@ -1,0 +1,17 @@
+[package]
+name = "discord_bot"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = { version = "0.8", default-features = false, features = ["form", "http1", "query", "tokio"] }
+base64 = "0.22"
+dotenvy = "0.15.7"
+poise = "0.6.1"
+rand = "0.9"
+reqwest = { version = "0.12", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+songbird = { version = "0.6.1", features = ["builtin-queue"] }
+symphonia = { version = "0.5", features = ["mkv", "isomp4", "aac", "mp3"] }
+tokio = { version = "1.54.1", features = ["full"] }

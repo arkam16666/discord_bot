@@ -1,0 +1,26 @@
+services:
+  bot:
+    build: .
+    image: discord_bot
+    container_name: discord_bot
+    # อ่าน DISCORD_TOKEN, PREFIX, YTDLP_ARGS จากไฟล์ .env (ไฟล์นี้ไม่ถูกใส่ลงใน image)
+    env_file: .env
+    environment:
+      # ใน container ต้องรับจากทุก interface ส่วนการจำกัดให้เปิดได้แค่เครื่องนี้ทำที่ ports ด้านล่าง
+      WEB_ADDR: 0.0.0.0:8080
+    # หน้าเว็บจัดการ: http://localhost:8080 (เปิดได้จากเครื่องนี้เท่านั้น)
+    ports:
+      - "127.0.0.1:8080:8080"
+    # เก็บการตั้งค่าเซิร์ฟเวอร์ (/setup) ไว้ ไม่หายตอนรีสตาร์ทหรืออัปเดต
+    volumes:
+      - bot-data:/app/data
+    # เปิดใหม่เองถ้าบอทล่มหรือเครื่องรีสตาร์ท
+    restart: unless-stopped
+    init: true
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+
+volumes:
+  bot-data:
